@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test.js"
+    "test": "beefy test.js --live --open"
   },
   "keywords": [
     "input,",
