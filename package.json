@@ -9,7 +9,10 @@
     "email": "oz@bunnybones.com",
     "url": "https://github.com/bunnybones1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "browser-event-adder": "^1.0.0",
+    "signals": "^1.0.0"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "node test.js"
