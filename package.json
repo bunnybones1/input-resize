@@ -1,0 +1,30 @@
+{
+  "name": "input-resize",
+  "version": "1.0.0",
+  "description": "Treat window resizing as a user input, with the convenience of signals.",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Tomasz Dysinski",
+    "email": "oz@bunnybones.com",
+    "url": "https://github.com/bunnybones1"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "input,",
+    "resize,",
+    "signals"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bunnybones1/input-resize.git"
+  },
+  "homepage": "https://github.com/bunnybones1/input-resize",
+  "bugs": {
+    "url": "https://github.com/bunnybones1/input-resize/issues"
+  }
+}
