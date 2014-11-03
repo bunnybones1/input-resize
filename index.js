@@ -2,10 +2,9 @@ var EventUtils = require('browser-event-adder');
 var signals = require('signals');
 var onResize = new signals.Signal();
 
-var lastW = 0,
-	lastH = 0;
-
 var Resize = {
+	width: 16,
+	height: 16,
 	minHeight : 16,
 	maxHeight : 100000,
 	minWidth : 16,
@@ -21,19 +20,21 @@ function adjustedHeight() {
 }
 
 function bump(resizeCallback) {
+	Resize.width = adjustedWidth();
+	Resize.height = adjustedHeight();
 	onResize.dispatch(
-		adjustedWidth(), 
-		adjustedHeight()
+		Resize.width, 
+		Resize.height
 	);
 }
 
 EventUtils.addEvent(window, "resize", function(event) {
 	var w = adjustedWidth();
 	var h = adjustedHeight();
-	if(w == lastW && h == lastH) return;
+	if(w == Resize.width && h == Resize.height) return;
+	Resize.width = w;
+	Resize.height = h;
 	onResize.dispatch(w, h);
-	lastW = w;
-	lastH = h;
 });
 
 Resize.onResize = onResize;
