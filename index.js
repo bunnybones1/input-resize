@@ -8,7 +8,8 @@ var Resize = {
 	minHeight : 16,
 	maxHeight : 100000,
 	minWidth : 16,
-	maxWidth : 100000
+	maxWidth : 100000,
+	debounce : 50
 }
 
 function adjustedWidth() {
@@ -34,7 +35,17 @@ EventUtils.addEvent(window, "resize", function(event) {
 	if(w == Resize.width && h == Resize.height) return;
 	Resize.width = w;
 	Resize.height = h;
-	onResize.dispatch(w, h);
+	if(Resize.debounce > 0) {
+		if(!Resize.debouncing) {
+			setTimeout(function() {
+				Resize.debouncing = false;
+				onResize.dispatch(Resize.width, Resize.height);
+			}, Resize.debounce);
+		}
+		Resize.debouncing = true;
+	} else {
+		onResize.dispatch(w, h);
+	}
 });
 
 Resize.onResize = onResize;

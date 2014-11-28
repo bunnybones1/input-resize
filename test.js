@@ -7,4 +7,5 @@ ResizeManager.minHeight = 600;
 
 ResizeManager.onResize.add(function(x, y) {
 	label.replaceWholeText(x + ' ' + y);
+	console.log(x, y);
 });
