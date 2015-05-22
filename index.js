@@ -13,11 +13,13 @@ var Resize = {
 }
 
 function adjustedWidth() {
-	return Math.max(Resize.minWidth, Math.min(Resize.maxWidth, window.innerWidth));
+	var width = window.innerWidth || document.documentElement.clientWidth;
+	return Math.max(Resize.minWidth, Math.min(Resize.maxWidth, width));
 }
 
 function adjustedHeight() {
-	return Math.max(Resize.minHeight, Math.min(Resize.maxHeight, window.innerHeight));
+	var height = window.innerHeight || document.documentElement.clientHeight;
+	return Math.max(Resize.minHeight, Math.min(Resize.maxHeight, height));
 }
 
 function bump(resizeCallback) {
