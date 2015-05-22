@@ -1,6 +1,6 @@
 {
   "name": "input-resize",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Treat window resizing as a user input, with the convenience of signals.",
   "main": "index.js",
   "license": "MIT",
