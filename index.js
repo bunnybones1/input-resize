@@ -5,11 +5,10 @@ var onResize = new signals.Signal();
 var Resize = {
 	width: 16,
 	height: 16,
-	minHeight : 16,
-	maxHeight : 100000,
-	minWidth : 16,
-	maxWidth : 100000,
-	debounce : 50
+	minHeight: 16,
+	maxHeight: 100000,
+	minWidth: 16,
+	maxWidth: 100000,
 }
 
 function adjustedWidth() {
@@ -22,7 +21,7 @@ function adjustedHeight() {
 	return Math.max(Resize.minHeight, Math.min(Resize.maxHeight, height));
 }
 
-function bump(resizeCallback) {
+function bump() {
 	Resize.width = adjustedWidth();
 	Resize.height = adjustedHeight();
 	onResize.dispatch(
@@ -34,20 +33,10 @@ function bump(resizeCallback) {
 EventUtils.addEvent(window, "resize", function(event) {
 	var w = adjustedWidth();
 	var h = adjustedHeight();
-	if(w == Resize.width && h == Resize.height) return;
+	if(w === Resize.width && h === Resize.height) return;
 	Resize.width = w;
 	Resize.height = h;
-	if(Resize.debounce > 0) {
-		if(!Resize.debouncing) {
-			setTimeout(function() {
-				Resize.debouncing = false;
-				onResize.dispatch(Resize.width, Resize.height);
-			}, Resize.debounce);
-		}
-		Resize.debouncing = true;
-	} else {
-		onResize.dispatch(w, h);
-	}
+	onResize.dispatch(w, h);
 });
 
 Resize.onResize = onResize;
